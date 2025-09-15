@@ -1,31 +1,25 @@
 {
   "manifest_version": 3,
-  "name": "Tweet Deleter (No API)",
-  "version": "1.0.0",
-  "description": "Delete your tweets by automating the web UI. No API keys.",
+  "name": "Twitter Tweet Deleter",
+  "version": "1.0",
+  "description": "Delete all your tweets easily.",
   "permissions": [
-    "tabs",
-    "debugger"
+    "activeTab",
+    "storage"
   ],
   "host_permissions": [
-    "https://twitter.com/*",
-    "https://x.com/*"
+    "https://x.com/*",
+    "https://twitter.com/*"
   ],
   "action": {
-    "default_title": "Tweet Deleter",
-    "default_popup": "popup.html"
-  },
-  "background": {
-    "service_worker": "background.js"
+    "default_popup": "popup.html",
+    "default_title": "Delete Tweets"
   },
   "content_scripts": [
     {
-      "matches": [
-        "https://twitter.com/*",
-        "https://x.com/*"
-      ],
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
       "js": ["content.js"],
-      "run_at": "document_idle"
+      "run_at": "document_end"
     }
   ]
 }
