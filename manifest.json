@@ -1,25 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "Twitter Tweet Deleter",
+  "name": "Tweet Deleter",
   "version": "1.0",
-  "description": "Delete all your tweets easily.",
+  "description": "Twitterのツイートを一括削除する拡張機能",
   "permissions": [
-    "activeTab",
-    "storage"
+    "activeTab"
   ],
-  "host_permissions": [
-    "https://x.com/*",
-    "https://twitter.com/*"
-  ],
-  "action": {
-    "default_popup": "popup.html",
-    "default_title": "Delete Tweets"
-  },
   "content_scripts": [
     {
-      "matches": ["https://x.com/*", "https://twitter.com/*"],
-      "js": ["content.js"],
-      "run_at": "document_end"
+      "matches": ["https://twitter.com/*", "https://x.com/*"],
+      "js": ["content_script.js"],
+      "run_at": "document_idle"
     }
-  ]
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
 }
